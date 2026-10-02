@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tes Calon Pengurus 60 OSIS SMAN 1 BIREUEN Periode 26/27</title>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-hover: #1d4ed8;
+      --secondary: #64748b;
+      --success: #15803d;
+      --danger: #b91c1c;
+      --warning: #b45309;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --border: #e2e8f0;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding-bottom: 40px; }
+
+    header {
+      background-color: var(--primary);
+      color: white;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 { font-size: 1.1rem; font-weight: 700; }
+    .timer-box { font-size: 1.2rem; font-weight: bold; background: rgba(255,255,255,0.15); padding: 6px 14px; border-radius: 8px; }
+
+    main { max-width: 900px; margin: 25px auto; padding: 0 16px; }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .hidden { display: none !important; }
+
+    h2 { margin-bottom: 16px; color: var(--primary); border-bottom: 2px solid var(--border); padding-bottom: 8px; font-size: 1.3rem; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 0.95rem; }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: border 0.2s;
+    }
+    input:focus, select:focus { border-color: var(--primary); }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+    .btn:hover { background-color: var(--primary-hover); }
+    .btn:active { transform: scale(0.98); }
+    .btn-secondary { background-color: var(--secondary); }
+    .btn-secondary:hover { background-color: #475569; }
+    .btn-danger { background-color: var(--danger); }
+    .btn-danger:hover { background-color: #991b1b; }
+    .btn-success { background-color: var(--success); }
+    .btn-success:hover { background-color: #166534; }
+
+    .alert {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .alert-warning { background-color: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+
+    /* Question Styles */
+    .question-item { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .question-text { font-weight: 600; font-size: 1.05rem; margin-bottom: 12px; line-height: 1.5; }
+    .options { display: flex; flex-direction: column; gap: 10px; }
+    .option-label {
+      display: flex;
+      align-items: flex-start;
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .option-label:hover { background-color: #f1f5f9; }
+    .option-label input { width: auto; margin-right: 12px; margin-top: 3px; }
+
+    /* Admin Styles */
+    .admin-nav { display: flex; gap: 10px; margin-bottom: 20px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .stat-card { background: #f1f5f9; padding: 16px; border-radius: 8px; text-align: center; }
+    .stat-card h3 { font-size: 1.8rem; color: var(--primary); }
+    .stat-card p { font-size: 0.85rem; color: #64748b; }
+    
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    th { background-color: #f1f5f9; font-weight: 600; }
+    
+    .status-badge {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    .badge-normal { background: #dcfce7; color: #15803d; }
+    .badge-auto { background: #fee2e2; color: #b91c1c; }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; gap: 8px; text-align: center; }
+      .admin-nav { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="header-title">Tes Calon Pengurus 60 OSIS SMAN 1 BIREUEN Periode 26/27</h1>
+    <div id="timer-container" class="timer-box hidden">Waktu: <span id="timer-display">35:00</span></div>
+  </header>
+
+  <main>
+    <!-- LOGIN FORM -->
+    <div id="section-login" class="card">
+      <h2>Formulir Identitas Peserta</h2>
+      <div class="alert alert-warning">
+        <strong>⚠️ Peringatan Tata Tertib Sistem Ujian:</strong>
+        <ul style="margin-left: 20px; margin-top: 6px;">
+          <li>Waktu pengerjaan adalah <strong>35 Menit</strong>.</li>
+          <li><strong>DILARANG MENINGGALKAN HALAMAN / PINDAH TAB / MEMBUKA JENDELA MENGAMBANG.</strong></li>
+          <li>Jika Anda berpindah aplikasi/tab/layar, jawaban akan <strong>OTOMATIS DIKUMPULKAN BERSAMAAN DENGAN CATATAN PELANGGARAN</strong> oleh sistem.</li>
+        </ul>
+      </div>
+
+      <form id="form-login">
+        <div class="form-group">
+          <label for="input-nama">Nama Lengkap Peserta</label>
+          <input type="text" id="input-nama" placeholder="Masukkan nama lengkap..." required>
+        </div>
+        <div class="form-group">
+          <label for="input-kelas">Kelas</label>
+          <input type="text" id="input-kelas" placeholder="Contoh: X.1 / XI FIPA 2..." required>
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Mulai Tes Sekarang</button>
+      </form>
+      
+      <div style="margin-top: 25px; text-align: center;">
+        <button type="button" class="btn btn-secondary" onclick="showSection('section-admin-login')">Portal Admin OSIS</button>
+      </div>
+    </div>
+
+    <!-- EXAM SECTION -->
+    <div id="section-exam" class="card hidden">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: #f8fafc; padding: 12px; border-radius: 8px;">
+        <div>
+          <strong id="display-nama">---</strong><br>
+          <small id="display-kelas" style="color: #64748b;">---</small>
+        </div>
+        <button class="btn btn-danger" onclick="confirmSubmit('manual')">Kumpulkan Jawaban</button>
+      </div>
+
+      <form id="form-exam">
+        <div id="questions-container"></div>
+        <button type="button" class="btn btn-success" style="width: 100%; margin-top: 20px; padding: 16px; font-size: 1.1rem;" onclick="confirmSubmit('manual')">Selesaikan & Kumpulkan Ujian</button>
+      </form>
+    </div>
+
+    <!-- RESULT SECTION FOR USER -->
+    <div id="section-result" class="card hidden" style="text-align: center;">
+      <h2>Ujian Telah Terkumpul</h2>
+      <p id="result-message" style="margin-top: 10px; font-size: 1.1rem;"></p>
+      <div id="result-score" style="font-size: 3.5rem; font-weight: bold; color: var(--primary); margin: 20px 0;">0</div>
+      <p id="result-detail" style="color: #64748b;"></p>
+      <button class="btn" style="margin-top: 25px;" onclick="location.reload()">Kembali ke Halaman Utama</button>
+    </div>
+
+    <!-- ADMIN LOGIN -->
+    <div id="section-admin-login" class="card hidden">
+      <h2>Login Admin OSIS</h2>
+      <form id="form-admin-login">
+        <div class="form-group">
+          <label for="admin-pass">Kata Sandi Admin</label>
+          <input type="password" id="admin-pass" placeholder="Masukkan kata sandi admin..." required>
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Masuk Admin</button>
+      </form>
+      <button class="btn btn-secondary" style="width: 100%; margin-top: 10px;" onclick="showSection('section-login')">Kembali</button>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="section-admin-dashboard" class="card hidden">
+      <h2>Dashboard Admin OSIS</h2>
+      <div class="admin-nav">
+        <button class="btn btn-success" onclick="exportToCSV()">📥 Download Excel (CSV)</button>
+        <button class="btn btn-danger" onclick="clearData()">🗑️ Hapus Semua Data</button>
+        <button class="btn btn-secondary" onclick="showSection('section-login')">Keluar Admin</button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3 id="stat-total">0</h3>
+          <p>Total Peserta</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="stat-avg">0</h3>
+          <p>Rata-rata Nilai</p>
+        </div>
+        <div class="stat-card">
+          <h3 id="stat-violations">0</h3>
+          <p>Terdeteksi Keluar Layar</p>
+        </div>
+      </div>
+
+      <h3>Daftar Hasil Peserta</h3>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Lengkap</th>
+              <th>Kelas</th>
+              <th>Nilai</th>
+              <th>Waktu Selesai</th>
+              <th>Status Pengumpulan</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="table-results-body">
+            <!-- Data dimasukkan via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // --- BANK SOAL ---
+    const questionsData = [
+      { id: 1, text: "Dalam sebuah rapat, terjadi perbedaan pendapat antara ketua dan sebagian besar anggota mengenai konsep suatu kegiatan. Sikap ketua yang paling tepat adalah...", options: ["A. Tetap menjalankan keputusan yang dianggap paling tepat karena ketua memiliki tanggung jawab terbesar", "B. Mengikuti suara terbanyak tanpa perlu mempertimbangkan alasan dari masing-masing pihak", "C. Mendengarkan setiap pendapat, mempertimbangkan dampaknya, lalu mengambil keputusan berdasarkan hasil musyawarah", "D. Menunda keputusan sampai seluruh anggota menyetujui pendapat yang sama", "E. Menyerahkan keputusan sepenuhnya kepada pembina OSIS"], answer: "C" },
+      { id: 2, text: "Sebuah program kerja OSIS memiliki tujuan yang baik, tetapi setelah dievaluasi ternyata jumlah peserta jauh di bawah target. Kesimpulan yang paling tepat adalah...", options: ["A. Program tersebut gagal dan tidak perlu dilaksanakan kembali", "B. Panitia kurang bekerja keras sehingga harus diganti seluruhnya", "C. Program perlu dievaluasi berdasarkan penyebab rendahnya partisipasi sebelum menentukan keberlanjutannya", "D. Target peserta harus dihapus agar program dianggap berhasil", "E. Kesalahan sepenuhnya berada pada bidang yang bertanggung jawab atas publikasi"], answer: "C" },
+      { id: 3, text: "Dalam suatu kegiatan, seorang anggota melakukan kesalahan yang menyebabkan jadwal acara sedikit terlambat. Sebagai ketua panitia, tindakan yang paling tepat adalah...", options: ["A. Menegur anggota tersebut di depan seluruh panitia agar menjadi pelajaran", "B. Mengabaikan kesalahan tersebut karena acara tetap dapat dilanjutkan", "C. Memastikan masalah segera ditangani, kemudian mengevaluasi penyebabnya setelah kegiatan", "D. Memindahkan seluruh tanggung jawab anggota tersebut kepada anggota lain", "E. Menghentikan kegiatan sementara untuk mencari pihak yang bertanggung jawab"], answer: "C" },
+      { id: 4, text: "Bendahara OSIS menemukan bahwa anggaran suatu kegiatan ternyata lebih besar daripada dana yang tersedia. Apa langkah yang paling tepat?", options: ["A. Mengurangi kualitas kegiatan tanpa memberi tahu panitia", "B. Menggunakan dana pribadi pengurus agar kegiatan tetap berjalan", "C. Mengajukan revisi anggaran berdasarkan kebutuhan prioritas dan aturan yang berlaku", "D. Meminta setiap anggota membayar kekurangan dana", "E. Menghapus kegiatan tersebut tanpa melakukan pembahasan"], answer: "C" },
+      { id: 5, text: "Ketua OSIS mendapatkan kritik bahwa beberapa program kerja hanya melibatkan anggota OSIS tertentu sehingga siswa lain merasa kurang dilibatkan. Respons yang paling tepat adalah...", options: ["A. Menolak kritik karena program kerja merupakan tanggung jawab pengurus", "B. Menganggap kritik tersebut sebagai hal biasa dan tidak perlu ditindaklanjuti", "C. Mengevaluasi pola pelibatan siswa dan mencari cara agar kesempatan berpartisipasi lebih terbuka", "D. Menghentikan program yang dikritik agar tidak menimbulkan masalah", "E. Meminta siswa yang mengkritik untuk bergabung menjadi pengurus terlebih dahulu"], answer: "C" },
+      { id: 6, text: "Dalam rapat, seorang anggota yang biasanya aktif tiba-tiba diam dan tidak memberikan pendapat. Sebagai pemimpin rapat, tindakan yang paling tepat adalah...", options: ["A. Menganggap anggota tersebut tidak memiliki pendapat", "B. Meminta anggota tersebut berbicara secara langsung di depan semua orang", "C. Memberikan kesempatan untuk menyampaikan pendapat tanpa memaksanya", "D. Mengurangi tanggung jawabnya karena dianggap tidak aktif", "E. Mengakhiri rapat agar tidak membuang waktu"], answer: "C" },
+      { id: 7, text: "Sebuah kegiatan OSIS berjalan lancar, tetapi setelah selesai diketahui bahwa sebagian besar pekerjaan dikerjakan oleh beberapa orang saja. Hal tersebut menunjukkan bahwa...", options: ["A. Kegiatan berhasil sehingga pembagian tugas tidak perlu dipermasalahkan", "B. Anggota yang bekerja lebih banyak harus mendapatkan jabatan lebih tinggi", "C. Pelaksanaan kegiatan perlu dievaluasi, terutama dalam pembagian tugas dan koordinasi", "D. Anggota yang tidak bekerja harus langsung diberi sanksi", "E. Ketua seharusnya mengerjakan sebagian besar tugas agar kegiatan sukses"], answer: "C" },
+      { id: 8, text: "Jika seorang pengurus OSIS memiliki hubungan pertemanan dekat dengan salah satu peserta seleksi panitia, sikap yang paling tepat adalah...", options: ["A. Memilih temannya karena sudah mengetahui kemampuan orang tersebut", "B. Tidak memilih temannya sama sekali agar tidak dianggap memihak", "C. Tetap menggunakan kriteria seleksi yang sama terhadap seluruh peserta", "D. Meminta teman tersebut memberikan keuntungan tertentu sebagai imbalan", "E. Menyerahkan seluruh proses seleksi kepada teman dekatnya"], answer: "C" },
+      { id: 9, text: "Dalam sebuah kegiatan, terdapat dua usulan: usulan pertama lebih menarik tetapi membutuhkan biaya besar, sedangkan usulan kedua lebih sederhana tetapi sesuai anggaran. Apa yang sebaiknya dilakukan?", options: ["A. Selalu memilih usulan pertama karena lebih menarik bagi peserta", "B. Selalu memilih usulan kedua karena lebih murah", "C. Membandingkan manfaat, kebutuhan, risiko, dan kemampuan anggaran sebelum menentukan pilihan", "D. Menggabungkan keduanya meskipun anggaran tidak mencukupi", "E. Memilih berdasarkan suara ketua tanpa mempertimbangkan kondisi lainnya"], answer: "C" },
+      { id: 10, text: "Seorang ketua OSIS menyadari bahwa dirinya melakukan kesalahan dalam mengambil keputusan yang berdampak pada kegiatan. Sikap yang paling mencerminkan kepemimpinan adalah...", options: ["A. Menyembunyikan kesalahan agar wibawanya tidak berkurang", "B. Menyalahkan anggota yang menjalankan keputusan tersebut", "C. Mengakui kesalahan, memperbaiki dampaknya, dan menjadikannya bahan evaluasi", "D. Mengundurkan diri agar tidak lagi bertanggung jawab", "E. Menganggap kesalahan sebagai hal biasa sehingga tidak perlu dibahas"], answer: "C" },
+      
+      // Matematika
+      { id: 11, text: "[Matematika] Hasil dari 25 × 4 - 30 adalah...", options: ["A. 50", "B. 60", "C. 70", "D. 80"], answer: "B" },
+      { id: 12, text: "[Matematika] Jika 3x + 7 = 25, maka nilai x adalah...", options: ["A. 4", "B. 5", "C. 6", "D. 7"], answer: "C" },
+      { id: 13, text: "[Matematika] Sebuah barang seharga Rp200.000 mendapat diskon 15%. Harga setelah diskon adalah...", options: ["A. Rp160.000", "B. Rp165.000", "C. Rp170.000", "D. Rp175.000"], answer: "C" },
+      { id: 14, text: "[Matematika] Rata-rata dari 70, 80, 75, 85, dan 90 adalah...", options: ["A. 78", "B. 80", "C. 82", "D. 84"], answer: "B" },
+      { id: 15, text: "[Matematika] Sebuah persegi panjang memiliki panjang 12 cm dan lebar 8 cm. Luasnya adalah...", options: ["A. 40 cm²", "B. 80 cm²", "C. 96 cm²", "D. 120 cm²"], answer: "C" },
+
+      // Pengetahuan Umum
+      { id: 16, text: "[Pengetahuan Umum] Ibu kota Indonesia berdasarkan ketentuan yang berlaku saat ini adalah...", options: ["A. Bandung", "B. Jakarta", "C. Surabaya", "D. Nusantara"], answer: "B" },
+      { id: 17, text: "[Pengetahuan Umum] Planet terbesar dalam tata surya adalah...", options: ["A. Saturnus", "B. Bumi", "C. Jupiter", "D. Neptunus"], answer: "C" },
+      { id: 18, text: "[Pengetahuan Umum] Semboyan Bhinneka Tunggal Ika memiliki arti...", options: ["A. Bersatu kita teguh", "B. Berbeda-beda tetapi tetap satu", "C. Keadilan bagi seluruh rakyat", "D. Persatuan adalah kekuatan"], answer: "B" },
+      { id: 19, text: "[Pengetahuan Umum] Organ tubuh manusia yang berfungsi utama memompa darah adalah...", options: ["A. Paru-paru", "B. Ginjal", "C. Hati", "D. Jantung"], answer: "D" },
+      { id: 20, text: "[Pengetahuan Umum] Proklamasi Kemerdekaan Indonesia dibacakan pada tanggal...", options: ["A. 1 Juni 1945", "B. 17 Agustus 1945", "C. 18 Agustus 1945", "D. 10 November 1945"], answer: "B" }
+    ];
+
+    // --- GLOBAL VARIABLES ---
+    let currentUser = { nama: '', kelas: '' };
+    let timerInterval = null;
+    let timeLeft = 35 * 60; // 35 menit dalam detik
+    let isExamActive = false;
+    let isSubmitted = false;
+    const ADMIN_PASSWORD = "osis"; // Password Admin
+
+    // --- NAVIGATION HELPERS ---
+    function showSection(sectionId) {
+      const sections = ['section-login', 'section-exam', 'section-result', 'section-admin-login', 'section-admin-dashboard'];
+      sections.forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      document.getElementById(sectionId).classList.remove('hidden');
+    }
+
+    // --- EXAM LOGIC ---
+    document.getElementById('form-login').addEventListener('submit', function(e) {
+      e.preventDefault();
+      currentUser.nama = document.getElementById('input-nama').value.trim();
+      currentUser.kelas = document.getElementById('input-kelas').value.trim();
+
+      if (!currentUser.nama || !currentUser.kelas) return;
+
+      document.getElementById('display-nama').innerText = currentUser.nama;
+      document.getElementById('display-kelas').innerText = "Kelas: " + currentUser.kelas;
+
+      renderQuestions();
+      showSection('section-exam');
+      document.getElementById('timer-container').classList.remove('hidden');
+      startTimer();
+      
+      // Delay pendek untuk mengaktifkan pengawasan agar tidak langsung ter-trigger saat berpindah elemen UI
+      setTimeout(() => { isExamActive = true; }, 1000);
+    });
+
+    function renderQuestions() {
+      const container = document.getElementById('questions-container');
+      container.innerHTML = '';
+
+      questionsData.forEach((q, index) => {
+        const item = document.createElement('div');
+        item.className = 'question-item';
+
+        let optionsHTML = '';
+        q.options.forEach(opt => {
+          const optKey = opt.charAt(0); // Ambil 'A', 'B', 'C', dll.
+          optionsHTML += `
+            <label class="option-label">
+              <input type="radio" name="q_${q.id}" value="${optKey}">
+              <span>${opt}</span>
+            </label>
+          `;
+        });
+
+        item.innerHTML = `
+          <div class="question-text">${index + 1}. ${q.text}</div>
+          <div class="options">${optionsHTML}</div>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    function startTimer() {
+      const display = document.getElementById('timer-display');
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        let m = Math.floor(timeLeft / 60);
+        let s = timeLeft % 60;
+        display.innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          alert('Waktu 35 menit telah habis! Jawaban Anda otomatis dikumpulkan.');
+          submitExam('Waktu Habis');
+        }
+      }, 1000);
+    }
+
+    // --- ANTI CHEATING MONITORING ---
+    // Deteksi jika berpindah tab, membuka jendela mengambang, atau minimasi browser
+    window.addEventListener('blur', handleCheating);
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        handleCheating();
+      }
+    });
+
+    function handleCheating() {
+      if (isExamActive && !isSubmitted) {
+        isExamActive = false;
+        alert('⚠️ DETEKSI PELANGGARAN!\nAnda telah meninggalkan halaman tes / berpindah tab / membuka jendela mengambang.\nSistem otomatis mengumpulkan jawaban Anda sekarang.');
+        submitExam('Dikumpulkan Otomatis (Meninggalkan Halaman)');
+      }
+    }
+
+    function confirmSubmit(type) {
+      if (type === 'manual') {
+        if (confirm('Apakah Anda yakin ingin mengumpulkan seluruh jawaban sekarang?')) {
+          submitExam('Dikumpulkan Manual');
+        }
+      }
+    }
+
+    function submitExam(status) {
+      if (isSubmitted) return;
+      isSubmitted = true;
+      isExamActive = false;
+      clearInterval(timerInterval);
+      document.getElementById('timer-container').classList.add('hidden');
+
+      // Hitung Skor
+      let score = 0;
+      let totalQuestions = questionsData.length;
+
+      questionsData.forEach(q => {
+        const selected = document.querySelector(`input[name="q_${q.id}"]:checked`);
+        if (selected && selected.value === q.answer) {
+          score += (100 / totalQuestions);
+        }
+      });
+
+      score = Math.round(score);
+
+      // Simpan Hasil ke LocalStorage
+      const resultData = {
+        nama: currentUser.nama,
+        kelas: currentUser.kelas,
+        nilai: score,
+        waktu: new Date().toLocaleString('id-ID'),
+        status: status
+      };
+
+      saveResult(resultData);
+
+      // Tampilkan Hasil Peserta
+      document.getElementById('result-message').innerText = `Terima kasih, ${currentUser.nama}. Jawaban Anda berhasil dikumpulkan.`;
+      document.getElementById('result-score').innerText = score;
+      document.getElementById('result-detail').innerText = `Status Pengumpulan: ${status}`;
+      showSection('section-result');
+    }
+
+    function saveResult(data) {
+      let results = JSON.parse(localStorage.getItem('osis_exam_results')) || [];
+      results.push(data);
+      localStorage.setItem('osis_exam_results', JSON.stringify(results));
+    }
+
+    // --- ADMIN PANEL LOGIC ---
+    document.getElementById('form-admin-login').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pass = document.getElementById('admin-pass').value;
+      if (pass === ADMIN_PASSWORD) {
+        showSection('section-admin-dashboard');
+        loadAdminData();
+      } else {
+        alert('Kata sandi admin salah! (Default: osis)');
+      }
+    });
+
+    function loadAdminData() {
+      const results = JSON.parse(localStorage.getItem('osis_exam_results')) || [];
+      const tbody = document.getElementById('table-results-body');
+      tbody.innerHTML = '';
+
+      let totalScore = 0;
+      let violations = 0;
+
+      results.forEach((item, index) => {
+        totalScore += item.nilai;
+        if (item.status.includes('Otomatis')) violations++;
+
+        const tr = document.createElement('tr');
+        const badgeClass = item.status.includes('Otomatis') ? 'badge-auto' : 'badge-normal';
+        
+        tr.innerHTML = `
+          <td>${index + 1}</td>
+          <td><strong>${item.nama}</strong></td>
+          <td>${item.kelas}</td>
+          <td><strong style="font-size: 1.1rem;">${item.nilai}</strong></td>
+          <td>${item.waktu}</td>
+          <td><span class="status-badge ${badgeClass}">${item.status}</span></td>
+          <td><button class="btn btn-danger" style="padding: 4px 8px; font-size: 0.75rem;" onclick="deleteResult(${index})">Hapus</button></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('stat-total').innerText = results.length;
+      document.getElementById('stat-avg').innerText = results.length ? Math.round(totalScore / results.length) : 0;
+      document.getElementById('stat-violations').innerText = violations;
+    }
+
+    function deleteResult(index) {
+      if (confirm('Hapus data peserta ini?')) {
+        let results = JSON.parse(localStorage.getItem('osis_exam_results')) || [];
+        results.splice(index, 1);
+        localStorage.setItem('osis_exam_results', JSON.stringify(results));
+        loadAdminData();
+      }
+    }
+
+    function clearData() {
+      if (confirm('⚠️ YAKIN INGIN MENGHAPUS SELURUH DATA PESERTA? Tindakan ini tidak dapat dibatalkan.')) {
+        localStorage.removeItem('osis_exam_results');
+        loadAdminData();
+      }
+    }
+
+    function exportToCSV() {
+      const results = JSON.parse(localStorage.getItem('osis_exam_results')) || [];
+      if (results.length === 0) {
+        alert('Belum ada data untuk diunduh.');
+        return;
+      }
+
+      let csvContent = "data:text/csv;charset=utf-8,No,Nama Lengkap,Kelas,Nilai,Waktu Selesai,Status\n";
+      results.forEach((r, i) => {
+        csvContent += `${i + 1},"${r.nama}","${r.kelas}",${r.nilai},"${r.waktu}","${r.status}"\n`;
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "Hasil_Tes_OSIS_SMAN1_BIREUEN.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
+</body>
+</html>
